@@ -3,16 +3,37 @@ uv = "0.13.10"
 
 [tasks.preview]
 description = "List indexed projects whose roots are missing"
-run = "uv run --locked cbm-prune"
+run = "uv run --locked cbm-prune --list"
 
 [tasks.prune]
 description = "Delete indexed projects whose roots are missing"
 run = "uv run --locked cbm-prune --delete"
 
 [tasks.install]
-description = "Install cbm-prune as a user CLI"
-run = "uv tool install --editable ."
+description = "Install cbm-prune as a user CLI from this checkout"
+run = "uv tool install --editable --reinstall ."
+
+[tasks.hooks]
+description = "Use the tracked git hooks, which check commit subjects"
+run = "git config core.hooksPath .githooks"
+
+[tasks.format]
+description = "Format code with ruff"
+run = "uv run --locked ruff format ."
+
+[tasks.lint]
+description = "Lint and check formatting with ruff"
+run = ["uv run --locked ruff check .", "uv run --locked ruff format --check ."]
+
+[tasks.typecheck]
+description = "Type-check with ty"
+run = "uv run --locked ty check"
+
+[tasks.test]
+description = "Run the CLI tests against a fake codebase-memory-mcp"
+run = "uv run --locked python -m unittest discover -s tests"
 
 [tasks.check]
-description = "Build the package and check the CLI entry point"
+description = "Run every CI check: lint, types, tests and package build"
+depends = ["lint", "typecheck", "test"]
 run = ["uv build", "uv run --locked cbm-prune --help"]

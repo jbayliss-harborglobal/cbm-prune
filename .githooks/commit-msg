@@ -1,0 +1,5 @@
+#!/bin/sh
+# Reject a commit whose subject is not a Conventional Commit.
+# This is a local guard; `--no-verify` skips it. CI checks the PR title and
+# every commit in the pull request.
+exec uv run --no-project python "$(git rev-parse --show-toplevel)/scripts/check_conventional.py" commit-msg "$1"
