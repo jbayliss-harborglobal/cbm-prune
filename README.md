@@ -25,10 +25,6 @@ cbm-prune
 
 `uv tool upgrade cbm-prune` fetches the latest `main`.
 
-While the repository is private, these commands need GitHub access. Use
-`git+ssh://git@github.com/jbayliss-harborglobal/cbm-prune` in place of the
-HTTPS URL to fetch it with your SSH key.
-
 ## Output
 
 The preview prints a headline with the stale project count and the total
