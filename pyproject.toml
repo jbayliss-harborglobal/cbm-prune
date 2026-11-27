@@ -4,7 +4,12 @@ version = "0.1.0"
 description = "Preview and prune stale codebase-memory-mcp projects"
 readme = "README.md"
 requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/jbayliss-harborglobal/cbm-prune"
 
 [project.scripts]
 cbm-prune = "cbm_prune:main"

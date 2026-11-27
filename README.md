@@ -10,21 +10,24 @@ from the Codebase Memory index.
 You need [uv](https://docs.astral.sh/uv/) and `codebase-memory-mcp` on your
 PATH. The CLI was checked with `codebase-memory-mcp` 0.12.1.
 
-The repository is private, so uv fetches it over SSH with your GitHub access.
 Run it once without installing:
 
 ```sh
-uvx --from git+ssh://git@github.com/jbayliss-harborglobal/cbm-prune cbm-prune
+uvx --from git+https://github.com/jbayliss-harborglobal/cbm-prune cbm-prune
 ```
 
 Or install it as a user command:
 
 ```sh
-uv tool install git+ssh://git@github.com/jbayliss-harborglobal/cbm-prune
+uv tool install git+https://github.com/jbayliss-harborglobal/cbm-prune
 cbm-prune
 ```
 
 `uv tool upgrade cbm-prune` fetches the latest `main`.
+
+While the repository is private, these commands need GitHub access. Use
+`git+ssh://git@github.com/jbayliss-harborglobal/cbm-prune` in place of the
+HTTPS URL to fetch it with your SSH key.
 
 ## Output
 
@@ -32,14 +35,14 @@ The preview prints a headline with the stale project count and the total
 reclaimable size, then one row per location:
 
 ```text
-Dry run. 114 of 123 indexed projects have a missing root path.
-Reclaimable cache space: 88.8 GiB (95,307,169,792 bytes)
+Dry run. 101 of 110 indexed projects have a missing root path.
+Reclaimable cache space: 84.8 GiB (91,053,305,856 bytes)
 
-  LOCATION                                      PROJECTS  FOLDERS       SIZE
-  ~/.t3/worktrees/Integration as a Service            86       64   70.6 GiB
-  ~/Projects                                           9        9    9.8 GiB
-  /private/tmp (temporary)                             6        6    4.4 GiB
-  Total                                              114       92   88.8 GiB
+  LOCATION                        PROJECTS  FOLDERS       SIZE
+  ~/.t3/worktrees/my-service            86       64   70.6 GiB
+  ~/Projects                             9        9    9.8 GiB
+  /private/tmp (temporary)               6        6    4.4 GiB
+  Total                                101       79   84.8 GiB
 ```
 
 A location is the parent directory of each missing root. Roots under temporary
@@ -77,5 +80,5 @@ this checkout.
 | `mise run format` | Format code with ruff. |
 | `mise run hooks` | Turn on the commit message check for this clone. |
 
-Contribution rules for branches, commits and pull requests are in
+The code is under the [MIT licence](LICENSE). Contribution rules for branches, commits and pull requests are in
 [AGENTS.md](AGENTS.md).
