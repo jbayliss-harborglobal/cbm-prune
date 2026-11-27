@@ -1,0 +1,18 @@
+[tools]
+uv = "0.13.10"
+
+[tasks.preview]
+description = "List indexed projects whose roots are missing"
+run = "uv run --locked cbm-prune"
+
+[tasks.prune]
+description = "Delete indexed projects whose roots are missing"
+run = "uv run --locked cbm-prune --delete"
+
+[tasks.install]
+description = "Install cbm-prune as a user CLI"
+run = "uv tool install --editable ."
+
+[tasks.check]
+description = "Build the package and check the CLI entry point"
+run = ["uv build", "uv run --locked cbm-prune --help"]
