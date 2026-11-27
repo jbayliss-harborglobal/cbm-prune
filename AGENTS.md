@@ -34,6 +34,8 @@ index. Add a test case there for any change to scanning, grouping or deletion.
   approve, enable auto-merge for, or merge a pull request into `main`.
 - Pull requests merge with a merge commit only. Squash and rebase merging are
   turned off in the repository settings. Never force-push `main`.
+- GitHub deletes the remote branch when its pull request merges. Delete the
+  local branch and any worktree for it afterwards.
 
 ## Commits and pull requests
 
