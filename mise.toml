@@ -13,6 +13,10 @@ run = "uv run --locked cbm-prune --delete"
 description = "Install cbm-prune as a user CLI from this checkout"
 run = "uv tool install --editable --reinstall ."
 
+[tasks.uninstall]
+description = "Remove the cbm-prune user CLI installed by uv"
+run = "uv tool uninstall cbm-prune"
+
 [tasks.hooks]
 description = "Use the tracked git hooks, which check commit subjects"
 run = "git config core.hooksPath .githooks"

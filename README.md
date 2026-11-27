@@ -72,6 +72,7 @@ this checkout.
 | --- | --- |
 | `mise run preview` | Run the checkout's CLI with `--list`. |
 | `mise run prune` | Run the checkout's CLI with `--delete`. |
+| `mise run uninstall` | Remove the `cbm-prune` command installed by uv, from this checkout or a git URL. |
 | `mise run check` | Run every CI check: ruff, ty, tests and package build. |
 | `mise run format` | Format code with ruff. |
 | `mise run hooks` | Turn on the commit message check for this clone. |
